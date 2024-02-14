@@ -1,0 +1,51 @@
+##### Configure eslintrc
+
+```bash
+npm install --save-dev eslint eslint-plugin-tailwindcss prettier prettier-plugin-tailwindcss
+
+```
+
+##### Configure shadcn-ui
+
+````bash
+npx shadcn-ui@latest init
+```
+
+##### update prettierrc `eslintrc.json`
+
+```json
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended"
+  ]
+}
+````
+
+### install tina - [docs](https://tina.io/docs/frameworks/nextjs/)
+
+`npx @tinacms/cli@latest init`
+
+##### update scripts
+
+```json
+"scripts": {
+  "dev": "tinacms dev -c \"next dev\"",
+  "build": "tinacms build && next build",
+  "start": "tinacms build && next start",
+  "lint": "next lint"
+}
+```
+
+#### Edit next.config.mjs to work with admin ui
+
+```javascript
+async rewrites() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/index.html",
+      },
+    ];
+  }
+```
